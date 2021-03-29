@@ -1,50 +1,57 @@
 <template>
-	<view class="content">
-        <image class="logo" src="../../static/logo.png"></image>
-		<view>
-            <text class="title">{{title}}</text>
-        </view>
-	</view>
+    <div class="page">
+        <img
+            alt=""
+            mode="aspectFill"
+            :src="src"
+            :class="{
+        	    image: true,
+        	    enter: showEnter
+            }"
+        />
+        
+        <button class="btn-send" @click="choose">选择Ta</button>
+        
+        <button type="primary" class="btn-enter" @click="enter">预测Ta</button>
+    </div>
 </template>
 
-<script lang="ts">
-    import Vue from 'vue';
-	export default Vue.extend({
-		data() {
-			return {
-				title: 'Hello'
-			}
-		},
-		onLoad() {
-
-		},
-		methods: {
-
-		}
-	});
-</script>
-
 <style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin: 200rpx auto 50rpx auto;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
-	}
+    page {
+        height: 100%;
+    }
 </style>
+
+<style scoped>
+    .page {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 100%;
+    }
+
+    .image {
+        overflow: hidden;
+        width: 500rpx;
+        height: 500rpx;
+        margin-bottom: 96rpx;
+        border: 2rpx solid rgba(0, 0, 0, .1);
+        border-radius: 16rpx;
+    }
+    
+    .image.enter {
+        filter: grayscale(100%);
+    }
+    
+    .btn-send, .btn-enter {
+        width: 500rpx;
+        margin-bottom: 48rpx;
+    }
+    
+    .btn-enter {
+        color: #fff;
+    }
+</style>
+
+<script lang="ts" src="./index.ts"></script>
